@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.8.10 on linux)" generated="2024-02-16T09:40:25.451051" rpa="false" schemaversion="5">
+<suite id="s1" name="Kotikokki" source="/kotikokki">
+<suite id="s1-s1" name="Tehtävä2" source="/kotikokki/tehtävä2.robot">
+<kw name="Selaimen alustus" owner="utils" type="SETUP">
+<kw name="New Browser" owner="Browser">
+<msg time="2024-02-16T09:40:26.715835" level="INFO">{"browser": "chromium", "headless": true, "args": ["-start-maximized"], "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "/kotikokki/output/browser/traces/9d8cca0a-044b-44cc-a544-3d5508a3b57f"}</msg>
+<msg time="2024-02-16T09:40:27.053684" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":true,"args":["-start-maximized"],"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"/kotikokki/output/browser/traces/9d8cca0a-044b-44cc-a544-3d5508a3b57f"}</msg>
+<arg>Chromium</arg>
+<arg>headless=True</arg>
+<arg>args=["-start-maximized"]</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2024-02-16T09:40:26.712363" elapsed="0.341738"/>
+</kw>
+<kw name="New Context" owner="Browser">
+<msg time="2024-02-16T09:40:27.060002" level="INFO">{
+  "acceptDownloads": true,
+  "bypassCSP": false,
+  "forcedColors": "none",
+  "ignoreHTTPSErrors": false,
+  "javaScriptEnabled": true,
+  "offline": false,
+  "recordVideo": {
+    "dir": "/kotikokki/output/browser/video/documentation",
+    "size": {
+      "width": 1920,
+      "height": 1080
+    }
+  },
+  "reducedMotion": "no-preference",
+  "serviceWorkers": "allow",
+  "viewport": {
+    "width": 1920,
+    "height": 1080
+  }
+}</msg>
+<msg time="2024-02-16T09:40:27.085889" level="INFO">Successfully created context. </msg>
+<msg time="2024-02-16T09:40:27.086031" level="INFO">{'acceptDownloads': True, 'bypassCSP': False, 'forcedColors': 'none', 'ignoreHTTPSErrors': False, 'javaScriptEnabled': True, 'offline': False, 'recordVideo': {'dir': '/kotikokki/output/browser/video/documentation', 'size': {'width': 1920, 'height': 1080}}, 'reducedMotion': 'no-preference', 'serviceWorkers': 'allow', 'viewport': {'width': 1920, 'height': 1080}}</msg>
+<arg>recordVideo={'dir':'documentation', 'size':{'width':1920, 'height':1080}}</arg>
+<arg>viewport={'width':1920, 'height':1080}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new BrowserContext with specified options.</doc>
+<status status="PASS" start="2024-02-16T09:40:27.054907" elapsed="0.031309"/>
+</kw>
+<status status="PASS" start="2024-02-16T09:40:26.709531" elapsed="0.376915"/>
+</kw>
+<test id="s1-s1-t1" name="Almasta Kotikokkiin, kauppalista makaroonilaatikolle" line="16">
+<kw name="Mene AlmaMedia sivuille">
+<kw name="New Page" owner="Browser">
+<msg time="2024-02-16T09:40:28.953447" level="INFO">Successfully initialized new page object and opened url: https://www.almamedia.fi</msg>
+<msg time="2024-02-16T09:40:28.958955" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;video width="1920" height="1080" controls&gt;&lt;source src="browser/video/documentation/f56d4ae474e233851d93425863517cb9.webm" type="video/webm"&gt;&lt;/video&gt;</msg>
+<arg>${ALMA_MEDIA_SIVUT}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2024-02-16T09:40:27.095730" elapsed="1.864317"/>
+</kw>
+<kw name="Get Title" owner="Browser">
+<msg time="2024-02-16T09:40:28.990710" level="INFO">Title: 'Alma Media'</msg>
+<arg>==</arg>
+<arg>${ALMA_MEDIA_OTSIKKO}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the title of the current page.</doc>
+<status status="PASS" start="2024-02-16T09:40:28.961032" elapsed="0.029943"/>
+</kw>
+<kw name="Salli keksit" owner="utils">
+<kw name="Get Element" owner="Browser">
+<msg time="2024-02-16T09:40:30.367132" level="INFO">Locator found successfully.</msg>
+<msg time="2024-02-16T09:40:30.367676" level="INFO">${salli keksit} = //*[@id="almacmp-modalConfirmBtn"]</msg>
+<var>${salli keksit}</var>
+<arg>//*[@id="almacmp-modalConfirmBtn"]</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns a reference to a Playwright [https://playwright.dev/docs/api/class-locator|Locator].</doc>
+<status status="PASS" start="2024-02-16T09:40:28.992406" elapsed="1.375376"/>
+</kw>
+<kw name="Click" owner="Browser">
+<arg>${salli keksit}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2024-02-16T09:40:30.368467" elapsed="0.251372"/>
+</kw>
+<status status="PASS" start="2024-02-16T09:40:28.991619" elapsed="1.630057"/>
+</kw>
+<status status="PASS" start="2024-02-16T09:40:27.094942" elapsed="3.527046"/>
+</kw>
+<kw name="Avaa palvelut ja tuotteet">
+<kw name="Avaa &quot;Palvelut&quot; &quot;Tuotteet ja palvelut&quot;" owner="almamedian_tuotteet" source_name="Avaa ${päävalikon teksti} ${alavalikon teksti}">
+<kw name="Get Element" owner="Browser">
+<msg time="2024-02-16T09:40:30.647513" level="INFO">Locator found successfully.</msg>
+<msg time="2024-02-16T09:40:30.648083" level="INFO">${päävalikko} = //*[@id="navigation"]//a[text() = "Palvelut"]</msg>
+<var>${päävalikko}</var>
+<arg>//*[@id="navigation"]//a[text() = ${päävalikon teksti}]</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns a reference to a Playwright [https://playwright.dev/docs/api/class-locator|Locator].</doc>
+<status status="PASS" start="2024-02-16T09:40:30.625619" elapsed="0.022574"/>
+</kw>
+<kw name="Click" owner="Browser">
+<arg>${päävalikko}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2024-02-16T09:40:30.648801" elapsed="0.081182"/>
+</kw>
+<kw name="Get Element" owner="Browser">
+<msg time="2024-02-16T09:40:30.745154" level="INFO">Locator found successfully.</msg>
+<msg time="2024-02-16T09:40:30.745706" level="INFO">${alavalikko} = //*[@id="navigation"]//li[@class="alma-dropdown alma-trigger active"]//a[contains(text(), "Tuotteet ja palvelut")]</msg>
+<var>${alavalikko}</var>
+<arg>//*[@id="navigation"]//li[@class="alma-dropdown alma-trigger active"]//a[contains(text(), ${alavalikon teksti})]</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns a reference to a Playwright [https://playwright.dev/docs/api/class-locator|Locator].</doc>
+<status status="PASS" start="2024-02-16T09:40:30.730665" elapsed="0.015154"/>
+</kw>
+<kw name="Click" owner="Browser">
+<arg>${alavalikko}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2024-02-16T09:40:30.746510" elapsed="0.511719"/>
+</kw>
+<status status="PASS" start="2024-02-16T09:40:30.624193" elapsed="0.634471"/>
+</kw>
+<status status="PASS" start="2024-02-16T09:40:30.622789" elapsed="0.636166"/>
+</kw>
+<kw name="Etsi ja avaa kotikokki.net">
+<kw name="Etsi ja avaa tuote &quot;Kotikokki.net&quot;" owner="almamedian_tuotteet" source_name="Etsi ja avaa tuote ${tuotenimi}">
+<kw name="Get Element" owner="Browser">
+<msg time="2024-02-16T09:40:31.540582" level="INFO">Locator found successfully.</msg>
+<msg time="2024-02-16T09:40:31.541106" level="INFO">${tuote} = //*[@id="business-area-results"]//p[contains(text(),"Kotikokki.net")]</msg>
+<var>${tuote}</var>
+<arg>//*[@id="business-area-results"]//p[contains(text(),${tuotenimi})]</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns a reference to a Playwright [https://playwright.dev/docs/api/class-locator|Locator].</doc>
+<status status="PASS" start="2024-02-16T09:40:31.262617" elapsed="0.278620"/>
+</kw>
+<kw name="Scroll To Element" owner="Browser">
+<arg>${tuote}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>This method waits for actionability checks, then tries to scroll element into view,
+unless it is completely visible.</doc>
+<status status="PASS" start="2024-02-16T09:40:31.542005" elapsed="0.485795"/>
+</kw>
+<kw name="Click" owner="Browser">
+<arg>${tuote}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2024-02-16T09:40:32.029104" elapsed="0.207969"/>
+</kw>
+<status status="PASS" start="2024-02-16T09:40:31.261472" elapsed="0.975996"/>
+</kw>
+<kw name="Switch Page" owner="Browser">
+<msg time="2024-02-16T09:40:32.239486" level="INFO">Switching to page NEW,context CURRENT, browser CURRENT</msg>
+<msg time="2024-02-16T09:40:32.427690" level="INFO">Activated new page page=69a9b927-d2b7-4590-b687-883814a37480</msg>
+<arg>NEW</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Switches the active browser page to another open page by ``id`` or ``NEW``.</doc>
+<status status="PASS" start="2024-02-16T09:40:32.238001" elapsed="0.190058"/>
+</kw>
+<kw name="Grant Permissions" owner="Browser">
+<msg time="2024-02-16T09:40:32.456765" level="INFO">Granted permissions "geolocation"</msg>
+<arg>geolocation</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Grants permissions to the current context.</doc>
+<status status="PASS" start="2024-02-16T09:40:32.428687" elapsed="0.028505"/>
+</kw>
+<status status="PASS" start="2024-02-16T09:40:31.259787" elapsed="1.197806"/>
+</kw>
+<kw name="Valitse reseptihaku" owner="kotikokki_net_reseptihaku">
+<kw name="Get Element" owner="Browser">
+<msg time="2024-02-16T09:40:33.437010" level="INFO">Locator found successfully.</msg>
+<msg time="2024-02-16T09:40:33.437741" level="INFO">${reseptihaku} = //*[@id="main-navi"]//a[contains(text(),'Reseptihaku')]</msg>
+<var>${reseptihaku}</var>
+<arg>//*[@id="main-navi"]//a[contains(text(),'Reseptihaku')]</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns a reference to a Playwright [https://playwright.dev/docs/api/class-locator|Locator].</doc>
+<status status="PASS" start="2024-02-16T09:40:32.460850" elapsed="0.977005"/>
+</kw>
+<kw name="Click" owner="Browser">
+<arg>${reseptihaku}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2024-02-16T09:40:33.438523" elapsed="1.422100"/>
+</kw>
+<status status="PASS" start="2024-02-16T09:40:32.458582" elapsed="2.402457"/>
+</kw>
+<kw name="Hae makaronilaatikko">
+<kw name="Hae resepti makaronilaatikko" owner="kotikokki_net_reseptihaku" source_name="Hae resepti ${reseptinimi}">
+<kw name="Get Element" owner="Browser">
+<msg time="2024-02-16T09:40:35.322171" level="INFO">Locator found successfully.</msg>
+<msg time="2024-02-16T09:40:35.322593" level="INFO">${hakukenttä} = //*[@id="search-recipe-form"]//input</msg>
+<var>${hakukenttä}</var>
+<arg>//*[@id="search-recipe-form"]//input</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns a reference to a Playwright [https://playwright.dev/docs/api/class-locator|Locator].</doc>
+<status status="PASS" start="2024-02-16T09:40:34.864894" elapsed="0.457782"/>
+</kw>
+<kw name="Scroll To" owner="Browser">
+<msg time="2024-02-16T09:40:35.935498" level="INFO">JavaScript executed successfully.</msg>
+<msg time="2024-02-16T09:40:35.935650" level="INFO">JavaScript executed successfully.</msg>
+<msg time="2024-02-16T09:40:36.003920" level="INFO">JavaScript executed successfully.</msg>
+<msg time="2024-02-16T09:40:36.004131" level="INFO">JavaScript executed successfully.</msg>
+<msg time="2024-02-16T09:40:36.180711" level="INFO">JavaScript executed successfully.</msg>
+<arg>${hakukenttä}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Scrolls an element or the page to an absolute position based on given coordinates.</doc>
+<status status="PASS" start="2024-02-16T09:40:35.323208" elapsed="0.858024"/>
+</kw>
+<kw name="Type Text" owner="Browser">
+<msg time="2024-02-16T09:40:36.183391" level="INFO">Types the text 'makaronilaatikko' in the given field.</msg>
+<arg>${hakukenttä}</arg>
+<arg>${reseptinimi}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2024-02-16T09:40:36.181932" elapsed="0.488447"/>
+</kw>
+<kw name="Get Element" owner="Browser">
+<msg time="2024-02-16T09:40:36.695904" level="INFO">Locator found successfully.</msg>
+<msg time="2024-02-16T09:40:36.696295" level="INFO">${hae-nappi} = //*[@id="search-recipe-form"]/button[contains(text(),"Hae")]</msg>
+<var>${hae-nappi}</var>
+<arg>//*[@id="search-recipe-form"]/button[contains(text(),"Hae")]</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns a reference to a Playwright [https://playwright.dev/docs/api/class-locator|Locator].</doc>
+<status status="PASS" start="2024-02-16T09:40:36.670902" elapsed="0.025462"/>
+</kw>
+<kw name="Click" owner="Browser">
+<arg>${hae-nappi}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2024-02-16T09:40:36.696962" elapsed="0.467812"/>
+</kw>
+<status status="PASS" start="2024-02-16T09:40:34.863525" elapsed="2.301743"/>
+</kw>
+<status status="PASS" start="2024-02-16T09:40:34.862096" elapsed="2.303442"/>
+</kw>
+<kw name="Suodata kategorialla &quot;Pastat ja nuudelit&quot;">
+<kw name="Suodata kategorialla pasta" owner="kotikokki_net_reseptihaku" source_name="Suodata kategorialla ${kategoria}">
+<kw name="Get Element" owner="Browser">
+<msg time="2024-02-16T09:40:37.238473" level="INFO">Locator found successfully.</msg>
+<msg time="2024-02-16T09:40:37.239076" level="INFO">${kategoria} = //*[contains(@class,"category-radiobuttons")]//input[@type="radio" and @data-alias="pasta"]</msg>
+<var>${kategoria}</var>
+<arg>//*[contains(@class,"category-radiobuttons")]//input[@type="radio" and @data-alias="${kategoria}"]</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns a reference to a Playwright [https://playwright.dev/docs/api/class-locator|Locator].</doc>
+<status status="PASS" start="2024-02-16T09:40:37.175273" elapsed="0.063932"/>
+</kw>
+<kw name="Click" owner="Browser">
+<arg>${kategoria}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2024-02-16T09:40:37.239911" elapsed="0.715203"/>
+</kw>
+<status status="PASS" start="2024-02-16T09:40:37.173890" elapsed="0.781762"/>
+</kw>
+<status status="PASS" start="2024-02-16T09:40:37.171679" elapsed="0.784295"/>
+</kw>
+<kw name="Suodata pääraaka-aineella &quot;Makkkara ja jauheliha&quot;">
+<kw name="Suodata pääraaka-aineella mixedmeat" owner="kotikokki_net_reseptihaku" source_name="Suodata pääraaka-aineella ${pääraaka-aine}">
+<kw name="Get Element" owner="Browser">
+<msg time="2024-02-16T09:40:38.006722" level="INFO">Locator found successfully.</msg>
+<msg time="2024-02-16T09:40:38.007409" level="INFO">${pääraaka-aine} = //input[@type="checkbox" and @data-alias="mixedmeat"]</msg>
+<var>${pääraaka-aine}</var>
+<arg>//input[@type="checkbox" and @data-alias="${pääraaka-aine}"]</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns a reference to a Playwright [https://playwright.dev/docs/api/class-locator|Locator].</doc>
+<status status="PASS" start="2024-02-16T09:40:37.959037" elapsed="0.048510"/>
+</kw>
+<kw name="Click" owner="Browser">
+<arg>${pääraaka-aine}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2024-02-16T09:40:38.008301" elapsed="0.273639"/>
+</kw>
+<status status="PASS" start="2024-02-16T09:40:37.957973" elapsed="0.324404"/>
+</kw>
+<status status="PASS" start="2024-02-16T09:40:37.956855" elapsed="0.325799"/>
+</kw>
+<kw name="Tarkista, että hakutulos on isompi kuin 0" owner="kotikokki_net_reseptihaku" source_name="Tarkista, että hakutulos on isompi kuin ${min}">
+<kw name="Get Element" owner="Browser">
+<msg time="2024-02-16T09:40:38.301084" level="INFO">Locator found successfully.</msg>
+<msg time="2024-02-16T09:40:38.301708" level="INFO">${hakutulos-kenttä} = //span[@id="search-results-amount"]</msg>
+<var>${hakutulos-kenttä}</var>
+<arg>//span[@id="search-results-amount"]</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns a reference to a Playwright [https://playwright.dev/docs/api/class-locator|Locator].</doc>
+<status status="PASS" start="2024-02-16T09:40:38.285203" elapsed="0.016632"/>
+</kw>
+<kw name="Get Text" owner="Browser">
+<msg time="2024-02-16T09:40:38.343746" level="INFO">Text: '14'</msg>
+<msg time="2024-02-16T09:40:38.344353" level="INFO">${hakutulos-teksti} = 14</msg>
+<var>${hakutulos-teksti}</var>
+<arg>${hakutulos-kenttä}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2024-02-16T09:40:38.303407" elapsed="0.041096"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2024-02-16T09:40:38.346045" level="INFO">${min-määrä} = 0</msg>
+<var>${min-määrä}</var>
+<arg>${min}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2024-02-16T09:40:38.345346" elapsed="0.000798"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2024-02-16T09:40:38.347301" level="INFO">${hakutulos-määrä} = 14</msg>
+<var>${hakutulos-määrä}</var>
+<arg>${hakutulos-teksti}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2024-02-16T09:40:38.346641" elapsed="0.000793"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${hakutulos-määrä} &gt; ${min-määrä}</arg>
+<arg>msg="Hakutulos (${hakutulos-määrä}) pitäisi olla isompi kuin ${min-määrä}!"</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2024-02-16T09:40:38.347978" elapsed="0.001334"/>
+</kw>
+<status status="PASS" start="2024-02-16T09:40:38.283791" elapsed="0.065777"/>
+</kw>
+<kw name="Avaa ensimmäinen resepti ja tulosta sen raaka-aineet">
+<kw name="Avaa löydetty resepti järjestysnumeron mukaan 1 ja tulosta raaka-aineet" owner="kotikokki_net_reseptihaku" source_name="Avaa löydetty resepti järjestysnumeron mukaan ${järjestysnumero} ja tulosta raaka-aineet">
+<kw name="Get Element" owner="Browser">
+<msg time="2024-02-16T09:40:38.373392" level="INFO">Locator found successfully.</msg>
+<msg time="2024-02-16T09:40:38.373911" level="INFO">${resepti} = //*[@id="recipe-search-results"]/li[1]</msg>
+<var>${resepti}</var>
+<arg>//*[@id="recipe-search-results"]/li[${järjestysnumero}]</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns a reference to a Playwright [https://playwright.dev/docs/api/class-locator|Locator].</doc>
+<status status="PASS" start="2024-02-16T09:40:38.352537" elapsed="0.021506"/>
+</kw>
+<kw name="Click" owner="Browser">
+<arg>${resepti}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2024-02-16T09:40:38.374679" elapsed="0.235655"/>
+</kw>
+<kw name="Get Element" owner="Browser">
+<msg time="2024-02-16T09:40:38.901341" level="INFO">Locator found successfully.</msg>
+<msg time="2024-02-16T09:40:38.901971" level="INFO">${ld+json elementti} = //script[@type="application/ld+json" and contains(text(),"recipeIngredient")]</msg>
+<var>${ld+json elementti}</var>
+<arg>//script[@type="application/ld+json" and contains(text(),"recipeIngredient")]</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns a reference to a Playwright [https://playwright.dev/docs/api/class-locator|Locator].</doc>
+<status status="PASS" start="2024-02-16T09:40:38.611176" elapsed="0.290968"/>
+</kw>
+<kw name="Get Text" owner="Browser">
+<msg time="2024-02-16T09:40:39.429648" level="INFO">Text: '\n{\n    "@context": "https://schema.org",\n    "@type": "Recipe",\n    "name": "Makaronilaatikko",\n    "recipeInstructions": ["Keitä makaronit ohjeen mukaan. Huuhtele keitetyt makaronit kylmällä vedellä.","Paista jauheliha ja kuullota sipuli paistinpannussa. Mausta jauheliha.","Sekoita jauheliha ja keitetyt makaronit keskenään ja kaada ne voideltuun uunivuokaan.","Sekoita munat ja maito keskenään ja kaada seos mukaaan vuokaan.","Kypsennä laatikko 200 asteessa n. 1 h, kunnes se on hyytynyt kokonaan."],\n    "author": {\n        "@type": "Person",\n        "name":  "LeiburiJesse"\n    },\n    "prepTime": "",\n    "cookTime": "",\n    "datePublished": "2014-05-06",\n\n    "image": ["https://www.kotikokki.net/media/cache/large/recipeimage/large/53688d2ad074a96441000008/IMG_6091.jpg"],\n\n    "recipeIngredient": [\n                                    "400g makaroneja" ,\n                                                "400g jauhelihaa" ,\n                                                "1 sipuli" ,\n                                                "1½tl suolaa" ,\n                                                "1tl currya" ,\n                                                "1tl paprikajauhetta" ,\n                                                "2tl timjamia" ,\n                                                "1½tl mustapippuria" ,\n                                                "ripaus valkopippuria" ,\n                                                "ripaus cayannepippuria" ,\n                                                "3 kananmunaa" ,\n                                                "7dl maitoa" \n                        ],\n\n    "interactionStatistic": [\n        {\n            "@type": "InteractionCounter",\n            "interactionType": "https://schema.org/Comment",\n            "userInteractionCount": "5"\n        },\n        {\n            "@type": "InteractionCounter",\n            "interactionType": "https://schema.org/LikeAction",\n            "userInteractionCount": "31"\n        },\n        {\n            "@type": "InteractionCounter",\n            "interactionType": "https://schema.org/WatchAction",\n            "userInteractionCount": "124300"\n        }\n    ],\n\n    "keywords": "makaroni, jauheliha, sipuli, suolata, curry, paprikajauhe, timjami, mustapippuri, valkopippuri, cayannepippuria, kananmuna, maito",\n        "recipeCategory": "Pääruoat, Pastat ja nuudelit",\n\n    "suitableForDiet": ["https://schema.org/LowFatDiet"\n    ]\n}\n'</msg>
+<msg time="2024-02-16T09:40:39.430242" level="INFO">${ld+json string} = 
+{
+    "@context": "https://schema.org",
+    "@type": "Recipe",
+    "name": "Makaronilaatikko",
+    "recipeInstructions": ["Keitä makaronit ohjeen mukaan. Huuhtele keitetyt makaronit kylmällä vedellä....</msg>
+<var>${ld+json string}</var>
+<arg>${ld+json elementti}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2024-02-16T09:40:38.902664" elapsed="0.527739"/>
+</kw>
+<kw name="Convert String To Json" owner="JSONLibrary">
+<msg time="2024-02-16T09:40:39.431865" level="INFO">${ld+json resepti} = {'@context': 'https://schema.org', '@type': 'Recipe', 'name': 'Makaronilaatikko', 'recipeInstructions': ['Keitä makaronit ohjeen mukaan. Huuhtele keitetyt makaronit kylmällä vedellä.', 'Paista jauheli...</msg>
+<var>${ld+json resepti}</var>
+<arg>${ld+json string}</arg>
+<doc>Convert String to JSON object</doc>
+<status status="PASS" start="2024-02-16T09:40:39.431017" elapsed="0.000946"/>
+</kw>
+<kw name="Get Value From Json" owner="JSONLibrary">
+<msg time="2024-02-16T09:40:39.516355" level="INFO">${raaka-aineet} = [['400g makaroneja', '400g jauhelihaa', '1 sipuli', '1½tl suolaa', '1tl currya', '1tl paprikajauhetta', '2tl timjamia', '1½tl mustapippuria', 'ripaus valkopippuria', 'ripaus cayannepippuria', '3 kanan...</msg>
+<var>${raaka-aineet}</var>
+<arg>${ld+json resepti}</arg>
+<arg>$..recipeIngredient</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<status status="PASS" start="2024-02-16T09:40:39.432495" elapsed="0.084094"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${raaka-aineet}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-02-16T09:40:39.517339" elapsed="0.001157"/>
+</kw>
+<status status="PASS" start="2024-02-16T09:40:38.351795" elapsed="1.167259"/>
+</kw>
+<status status="PASS" start="2024-02-16T09:40:38.350440" elapsed="1.168873"/>
+</kw>
+<status status="PASS" start="2024-02-16T09:40:27.086645" elapsed="12.434033"/>
+</test>
+<kw name="Selaimen alasajo" owner="utils" type="TEARDOWN">
+<kw name="Close Context" owner="Browser">
+<msg time="2024-02-16T09:40:39.914240" level="INFO">Switching browser to CURRENT</msg>
+<msg time="2024-02-16T09:40:39.922497" level="INFO">Returned active browser id. CURRENT</msg>
+<msg time="2024-02-16T09:40:39.922850" level="INFO">Switching browser to browser=37bca604-e730-4099-8271-8e460ee7bcd8</msg>
+<msg time="2024-02-16T09:40:39.932216" level="INFO">Successfully changed active browser: browser=37bca604-e730-4099-8271-8e460ee7bcd8</msg>
+<msg time="2024-02-16T09:40:39.932624" level="INFO">Switching context to CURRENT in CURRENT</msg>
+<msg time="2024-02-16T09:40:39.937990" level="INFO">Returned active context id: CURRENT</msg>
+<msg time="2024-02-16T09:40:39.941602" level="INFO">Switching context to context=1f38ea8c-1c27-4822-83fb-1d5db5aeda8a in CURRENT</msg>
+<msg time="2024-02-16T09:40:39.955693" level="INFO">Successfully changed active context: context=1f38ea8c-1c27-4822-83fb-1d5db5aeda8a</msg>
+<msg time="2024-02-16T09:40:45.522520" level="INFO">Successfully closed Context</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Closes a Context.</doc>
+<status status="PASS" start="2024-02-16T09:40:39.907367" elapsed="5.615438"/>
+</kw>
+<kw name="Close Browser" owner="Browser">
+<msg time="2024-02-16T09:40:45.616632" level="INFO">Closed browser</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-02-16T09:40:45.523268" elapsed="0.093649"/>
+</kw>
+<status status="PASS" start="2024-02-16T09:40:39.902544" elapsed="5.714605"/>
+</kw>
+<status status="PASS" start="2024-02-16T09:40:25.505657" elapsed="20.111586"/>
+</suite>
+<status status="PASS" start="2024-02-16T09:40:25.456807" elapsed="20.174712"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Kotikokki">Kotikokki</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="Tehtävä2">Kotikokki.Tehtävä2</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
